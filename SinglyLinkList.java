@@ -1,4 +1,4 @@
-package Dante;
+
 
 public class SinglyLinkList {
 	

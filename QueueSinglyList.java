@@ -1,8 +1,8 @@
-package Dante;import Dante.SinglyLinkList;
+
 
 public class QueueSinglyList {
 	
-    private Dante.SinglyLinkList lst = new Dante.SinglyLinkList();
+    private SinglyLinkList lst = new SinglyLinkList();
 	
 	public void enqueue(int e) {
 		lst.insertLast(e); //FIFO add at back and remove from front

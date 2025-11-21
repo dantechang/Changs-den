@@ -1,4 +1,4 @@
-package Dante;import Dante.QueueSinglyList; 
+
 
 import java.util.Arrays;
 import java.util.Random;
@@ -8,22 +8,7 @@ import java.util.stream.IntStream;
 
 public class MergeLists {
 
-	public static Dante.QueueSinglyList Merge(int[] listA, int[] listB){
-		Dante.QueueSinglyList s = new Dante.QueueSinglyList();
-		Dante.QueueSinglyList a = new Dante.QueueSinglyList();
-		Dante.QueueSinglyList b = new Dante.QueueSinglyList();
-		
-		int sizeA= listA.length;
-		int sizeB = listB.length;
-		
-		
-		for(int i = 0;i<sizeA;i++) {
-			a.enqueue(listA[i]);
-		}
-		
-		for (int j =0;j<sizeB;j++) {
-			b.enqueue(listB[j]);
-		}
+	public static void Merge(QueueSinglyList a, QueueSinglyList b, QueueSinglyList s){
 
 		while (!a.isEmpty() && !b.isEmpty()) {  //loop runs n-1 times in worst case, n = sizeA+sizeB
 			if (a.front() < b.front()) { //smallest numbers at front
@@ -48,9 +33,6 @@ public class MergeLists {
 			}
 		}
 		
-		
-		return s;
-		
 	}
 	
 	public static void bonus() {
@@ -61,7 +43,7 @@ public class MergeLists {
 			long averageTime = 0;
 			int[] a;
 			int[] b;
-			Dante.QueueSinglyList s = new Dante.QueueSinglyList();
+			QueueSinglyList s = new QueueSinglyList();
 			
 			
 			for(int i = 0; i<1000;i++) {
@@ -114,8 +96,8 @@ public class MergeLists {
 		
 		//(i) A = 1,3,5,7,9 B = 2,3,6,8,10 (ii) A = 1,2,3,4,5 B = 6,7,8,9,10
 		//(iii) A = 2,4,8,16,32 B = 1,3,5,7,9 (iv) A = 10,11,12,13 B = 1,2,3,4
-		
-		 Dante.QueueSinglyList s = MergeLists.Merge(a, b);
+		QueueSinglyList s = new QueueSinglyList();
+		 MergeLists.Merge(a, b, s);
 		 
 		 s.display();
 		

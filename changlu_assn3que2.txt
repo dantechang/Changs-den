@@ -1,0 +1,90 @@
+Script started on 2025-03-25 14:39:32-04:00 [TERM="xterm-256color" TTY="/dev/pts/28" COLUMNS="236" LINES="74"]
+[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ sqlplus changlu
+[?2004l[?2004h
+SQL*Plus: Release 21.0.0.0.0 - Production on Tue Mar 25 14:39:47 2025
+Version 21.8.0.0.0
+
+Copyright (c) 1982, 2022, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[?2004h[KEnter password: [17G[17G[KEnter password: *[18G[18G[KEnter password: **[19G[19G[KEnter password: ***[20G[20G[KEnter password: ****[21G[21G[KEnter password: *****[22G[22G[KEnter password: ******[23G[23G[KEnter password: *******[24G[24G[KEnter password: ********[25G[25G[KEnter password: *********[26G[26G[KEnter password: **********[27G[27G[KEnter password: ***********[28G[28G[KEnter password: ************[29G[29G[17G[?2004l
+[KEnter password: [17G[?2004h
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [K[?2004hSQL> Sele[K[K[KELECT DISTINCT SR>[K.Customer_name, Sr[KR.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT DISTINCT SR.Customer_name, SR.Flight_number
+  2  [K  2  [K[?2004h  2  FROM SEAT_RESERVATION SR[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM SEAT_RESERVATION SR
+  3  [K  3  [K[?2004h  3  JOIN LEG_INSTANCE LI ON SR>[K.Flight_number = LIFlight_number AND SR.[1@.[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CLeg_number = LI.l[KLeg_number AND SR.FDarte[K[K[Kte = LI.FDate[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hJOIN LEG_INSTANCE LI ON SR.Flight_number = LI.Flight_number AND SR.Leg_number = LI.Leg_number AND SR.FDate = LI.FDate
+  4  [K  4  [K[?2004h  4  WHERE LI>[K.Departure_airport_code = 'YQG';[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE LI.Departure_airport_code = 'YQG';
+
+CUSTOMER_NAME					   FLIGH
+-------------------------------------------------- -----
+Peter Opo					   PA233
+Karen Appa					   WJ250
+Tony Appa					   WJ250
+Mariane Mooer					   WJ250
+
+SQL> [KSQL> [K[?2004hSQL> SELECT DISTINCT F.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT DISTINCT F.Flight_number
+  2  [K  2  [K[?2004h  2  FROM FLIGHT_LEG F[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM FLIGHT_LEG F
+  3  [K  3  [K[?2004h  3  WHERE F>[K.Leg_number >1;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE F.Leg_number >1;
+
+FLIGH
+-----
+WJ250
+AC275
+
+SQL> [KSQL> [K[?2004hSQL> SELECT F.Flight_number [K, F.Airline, L.FDate, COUNT(SR[K.Cutsome[K[K[K[K[Kstomer_name)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C Num_custi[Komers[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT F.Flight_number, F.Airline, L.FDate, COUNT(S.Customer_name) Num_customers
+  2  [K  2  [K[?2004h  2  FROM FLIGHT F[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM FLIGHT F
+  3  [K  3  [K[?2004h  3  JOIN LEG I[K[K_INSTANCE L ON F.Flight_number = L.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hJOIN LEG_INSTANCE L ON F.Flight_number = L.Flight_number
+  4  [K  4  [K[?2004h  4  LEFT JOIN SEAT_RESERVATION S ON L>[K.Flight_number = S.Flight_number AND L.Leg_number = S.Leg-[K_number AND L [K.FDare[K[Kte = S.FDate[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hLEFT JOIN SEAT_RESERVATION S ON L.Flight_number = S.Flight_number AND L.Leg_number = S.Leg_number AND L.FDate = S.FDate
+  5  [K  5  [K[?2004h  5  GROUP BY F.Flight_number, F.Airline, F[KL.FDate;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hGROUP BY F.Flight_number, F.Airline, L.FDate;
+
+FLIGH AIRLINE						 FDATE	   NUM_CUSTOMERS
+----- -------------------------------------------------- --------- -------------
+PA233 Porter Airline					 30-JAN-17	       1
+WJ250 WestJet						 15-JAN-17	       6
+AC275 Air Canada					 10-JAN-17	       2
+PA280 Porter Airline					 20-JAN-17	       1
+
+SQL> [KSQL> [K[?2004hSQL> SL[KELECT S [K.Customer_name [K, S.Seat_number, S.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT S.Customer_name, S.Seat_number, S.Flight_number
+  2  [K  2  [K[?2004h  2  FROM SEAT_RESERVART[K[KTION S[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM SEAT_RESERVATION S
+  3  [K  3  [K[?2004h  3  JOIN FLIGHT F ON S<>[K[K.Flight_number = F.Flight_numbeer[K[Kr[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hJOIN FLIGHT F ON S.Flight_number = F.Flight_number
+  4  [K  4  [K[?2004h  4  WHERE F.Airline = 'Air Canada';[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE F.Airline = 'Air Canada';
+
+CUSTOMER_NAME					   SEA FLIGH
+-------------------------------------------------- --- -----
+Mark Black					   5C  AC275
+Mark Black					   14B AC275
+
+SQL> [KSQL> [K[?2004hSQL> SELECT S.cus[K[K[KCustomer_name, S.Seat_number [K, S.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT S.Customer_name, S.Seat_number, S.Flight_number
+  2  [K  2  [K[?2004h  2  RO[K[KFROM SEAT_RESERVATION S[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM SEAT_RESERVATION S
+  3  [K  3  [K[?2004h  3  WHERE NOT E[KX[KEXISTS([C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE NOT EXISTS(
+  4  [K  4  [K[?2004h  4  SELECT*[K *[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT *
+  5  [K  5  [K[?2004h  5  FROM FLIGHT_LEG F[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM FLIGHT_LEG F
+  6  [K  6  [K[?2004h  6  WHERE F>[K.Flu[Kight_number = S.Flight_number AND F.Leg_number .1);[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE F.Flight_number = S.Flight_number AND F.Leg_number .1);
+WHERE F.Flight_number = S.Flight_number AND F.Leg_number .1)
+                                                         *
+ERROR at line 6:
+ORA-00920: invalid relational operator
+
+
+SQL> [KSQL> [K[?2004hSQL> WHERE F.Flight_number = S.Flight_number AND F.Leg_number .1);[C[C[C[C[CFROM FLIGHT_LEG F[K[C[C[C[C[C[9PSELECT *[C[C[C[C[CWHERE NOT EXISTS([C[C[C[C[CFROM SEAT_RESERVATION S[C[C[C[C[CSELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[C[23PWHERE F.Airline = 'Air Canada';[C[C[C[C[CJOIN FLIGHT F ON S.Flight_number = F.Flight_number[C[C[C[C[C[27PFROM SEAT_RESERVATION S[C[C[C[C[CSELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT S.Customer_name, S.Seat_number, S.Flight_number
+  2  [K  2  [K[?2004h  2  SELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[CWHERE F.Flight_number = S.Flight_number AND F.Leg_number .1);[C[C[C[C[CFROM FLIGHT_LEG F[K[C[C[C[C[C[9PSELECT *[C[C[C[C[CWHERE NOT EXISTS([C[C[C[C[CFROM SEAT_RESERVATION S[C[C[C[C[CSELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[C[31PFROM SEAT_RESERVATION S[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM SEAT_RESERVATION S
+  3  [K  3  [K[?2004h  3  FROM SEAT_RESERVATION S[C[C[C[C[CSELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[CWHERE F.Flight_number = S.Flight_number AND F.Leg_number .1);[C[C[C[C[CFROM FLIGHT_LEG F[K[C[C[C[C[C[9PSELECT *[C[C[C[C[CWHERE NOT EXISTS([C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE NOT EXISTS(
+  4  [K  4  [K[?2004h  4  WHERE NOT EXISTS([C[C[C[C[CFROM SEAT_RESERVATION S[C[C[C[C[CSELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[CWHERE F.Flight_number = S.Flight_number AND F.Leg_number .1);[C[C[C[C[CFROM FLIGHT_LEG F[K[C[C[C[C[C[9PSELECT *[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT *
+  5  [K  5  [K[?2004h  5  SELECT *[C[C[C[C[CWHERE NOT EXISTS([C[C[C[C[CFROM SEAT_RESERVATION S[C[C[C[C[CSELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[CWHERE F.Flight_number = S.Flight_number AND F.Leg_number .1);[C[C[C[C[CFROM FLIGHT_LEG F[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM FLIGHT_LEG F
+  6  [K  6  [K[?2004h  6  FROM FLIGHT_LEG F[C[C[C[C[C[9PSELECT *[C[C[C[C[CWHERE NOT EXISTS([C[C[C[C[CFROM SEAT_RESERVATION S[C[C[C[C[CSELECT S.Customer_name, S.Seat_number, S.Flight_number[C[C[C[C[CWHERE F.Flight_number = S.Flight_number AND F.Leg_number .1);[1P1);[1P1);>1);[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE F.Flight_number = S.Flight_number AND F.Leg_number>1);
+
+CUSTOMER_NAME					   SEA FLIGH
+-------------------------------------------------- --- -----
+Chris Natta					   16D PA280
+Peter Opo					   5A  PA233
+
+SQL> [KSQL> [K[?2004hSQL> exit[?2004l[C[C[C[C[C[K[?2004hexit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+[?2004l[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ exit
+[?2004lexit
+
+Script done on 2025-03-25 14:49:29-04:00 [COMMAND_EXIT_CODE="0"]

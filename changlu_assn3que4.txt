@@ -1,0 +1,57 @@
+Script started on 2025-03-25 15:50:51-04:00 [TERM="xterm-256color" TTY="/dev/pts/40" COLUMNS="236" LINES="74"]
+[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ exitscript changlu_assn3que3.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cd[Ksqlplus changlu
+[?2004l[?2004h
+SQL*Plus: Release 21.0.0.0.0 - Production on Tue Mar 25 15:50:55 2025
+Version 21.8.0.0.0
+
+Copyright (c) 1982, 2022, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[?2004h[KEnter password: [17G[17G[KEnter password: *[18G[18G[KEnter password: **[19G[19G[KEnter password: ***[20G[20G[KEnter password: ****[21G[21G[KEnter password: *****[22G[22G[KEnter password: ******[23G[23G[KEnter password: *******[24G[24G[KEnter password: ********[25G[25G[KEnter password: *********[26G[26G[KEnter password: **********[27G[27G[KEnter password: ***********[28G[28G[KEnter password: ************[29G[29G[17G[?2004l
+[KEnter password: [17G[?2004h
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [K[?2004hSQL> [7mSELECT DISTINCT S.Customer_name, S.Flight_number [27m[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT DISTINCT S.Customer_name, S.Flight_number 
+  2  [K  2  [K[?2004h  2  [7mFROM SEAT_RESERVATION S [27m[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM SEAT_RESERVATION S 
+  3  [K  3  [K[?2004h  3  WHERE EXISTS([C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE EXISTS(
+  4  [K  4  [K[?2004h  4  SELECT *[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT *
+  5  [K  5  [K[?2004h  5  FROM FLIGHT_LEG F[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM FLIGHT_LEG F
+  6  [K  6  [K[?2004h  6  WHERE F?[K.Flight_number = S.Flight_numner[K[K[Kber[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE F.Flight_number = S.Flight_number
+  7  [K  7  [K[?2004h  7  HAVING COUNT( F.Leg_number )[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C = 2[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hHAVING COUNT( F.Leg_number ) = 2
+  8  [K  8  [K[?2004h  8  )[?2004l[C[C[C[C[C[K[?2004h)
+  9  [K  9  [K[?2004h  9  AND NOT EXISTS([C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hAND NOT EXISTS(
+ 10  [K 10  [K[?2004h 10  SELECT *[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT *
+ 11  [K 11  [K[?2004h 11  FROM FLIGHT_LEG F[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM FLIGHT_LEG F
+ 12  [K 12  [K[?2004h 12  WHERE F.Flight_number = S.Fli[K[Klight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE F.Flight_number = S.Flight_number
+ 13  [K 13  [K[?2004h 13  HAVING COUNT(F.Leg_number)[C[C[C[C[C[C[C[C[C[C[C[C[C[C <.[K> 2[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hHAVING COUNT(F.Leg_number) <> 2
+ 14  [K 14  [K[?2004h 14  );[?2004l[C[C[C[C[C[K[?2004h);
+
+CUSTOMER_NAME					   FLIGH
+-------------------------------------------------- -----
+Mark Black					   AC275
+Karen Appa					   WJ250
+Tony Appa					   WJ250
+
+SQL> [KSQL> [K[?2004hSQL> SELECT DISTINCT S<[K.Customer_name, S.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT DISTINCT S.Customer_name, S.Flight_number
+  2  [K  2  [K[?2004h  2  FROM SEAT_RESERVATION S[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM SEAT_RESERVATION S
+  3  [K  3  [K[?2004h  3  WHERE NOT EXISTS ([C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE NOT EXISTS (
+  4  [K  4  [K[?2004h  4  SEE[KLECT * [C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * 
+  5  [K  5  [K[?2004h  5  FROM FLIGHT_LEHG[K[KG F[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hFROM FLIGHT_LEG F
+  6  [K  6  [K[?2004h  6  WHERE F>[K.Flight_number = S.Flight_number[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE F.Flight_number = S.Flight_number
+  7  [K  7  [K[?2004h  7  HAVING COUNT(F.Leg_number)[C[C[C[C[C[C[C[C[C[C[C[C[C[C = 2[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hHAVING COUNT(F.Leg_number) = 2
+  8  [K  8  [K[?2004h  8  );[?2004l[C[C[C[C[C[K[?2004h);
+
+CUSTOMER_NAME					   FLIGH
+-------------------------------------------------- -----
+Peter Opo					   PA233
+Chris Natta					   PA280
+
+SQL> [KSQL> [K[?2004hSQL> exit[?2004l[C[C[C[C[C[K[?2004hexit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+[?2004l[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ xit[K[K[Kexit
+[?2004lexit
+
+Script done on 2025-03-25 15:55:12-04:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,444 @@
+Script started on 2025-02-27 23:03:24-05:00 [TERM="xterm-256color" TTY="/dev/pts/305" COLUMNS="104" LINES="54"]
+[?2004h]0;changlu@delta: ~[01;32mchanglu@delta[00m:[01;34m~[00m$ sqlplus changlku[K[Ku
+[?2004l[?2004h
+SQL*Plus: Release 21.0.0.0.0 - Production on Thu Feb 27 23:03:35 2025
+Version 21.8.0.0.0
+
+Copyright (c) 1982, 2022, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[?2004h[KEnter password: [17G[17G[KEnter password: *[18G[18G[KEnter password: **[19G[19G[KEnter password: ***[20G[20G[KEnter password: ****[21G[21G[KEnter password: *****[22G[22G[KEnter password: ******[23G[23G[KEnter password: *******[24G[24G[KEnter password: ********[25G[25G[KEnter password: *********[26G[26G[KEnter password: **********[27G[27G[KEnter password: ***********[28G[28G[KEnter password: ************[29G[29G[17G[?2004l
+[KEnter password: [17G[?2004h
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [K[?2004hSQL> [7mCREATE TABLE AIRPORT[27m
+[7m (AirportCode CHAR(3) NOT NULL,[27m
+[7m Name VARCHAR2(25),[27m
+[7m City VARCHAR2(15),[27m
+[7m State CHAR(3),[27m
+[7m PRIMARY KEY(AirportCode));[27m[A[A[A[A[A[C[C[C[C[C[?2004l[C[C[C[C[C[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[C[C[C[C[C[?2004hCREATE TABLE AIRPORT
+  2   (AirportCode CHAR(3) NOT NULL,
+  3   Name VARCHAR2(25),
+  4   City VARCHAR2(15),
+  5   State CHAR(3),
+  6   PRIMARY KEY(AirportCode));
+
+Table created.
+
+SQL> [KSQL> [K[?2004hSQL> [7m CREATE TABLE FLIGHT[27m
+[7m (Flight# VARCHAR2(5) NOT NULL,[27m
+[7m Airline VARCHAR2(15),[27m
+[7m PRIMARY KEY(Flight#));[27m[A[A[A[C[C[C[C[C[?2004l[C[C[C[C[C[K
+[K
+[K
+[K[A[A[A[C[C[C[C[C[?2004h CREATE TABLE FLIGHT
+  2   (Flight# VARCHAR2(5) NOT NULL,
+  3   Airline VARCHAR2(15),
+  4   PRIMARY KEY(Flight#));
+
+Table created.
+
+SQL> [KSQL> [K[?2004hSQL> [7m CREATE TABLE FARE[27m
+[7m (Flight# VARCHAR2(5) NOT NULL,[27m
+[7m Farecode VARCHAR2(2),[27m
+[7m Amount NUMBER(6,2),[27m
+[7m PRIMARY KEY(Flight#, Farecode),[27m
+[7m FOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)[27m
+[7m ON DELETE CASCADE);[27m[A[A[A[A[A[A[C[C[C[C[C[?2004l[C[C[C[C[C[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[C[C[C[C[C[?2004h CREATE TABLE FARE
+  2   (Flight# VARCHAR2(5) NOT NULL,
+  3   Farecode VARCHAR2(2),
+  4   Amount NUMBER(6,2),
+  5   PRIMARY KEY(Flight#, Farecode),
+  6   FOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)
+  7   ON DELETE CASCADE);
+
+Table created.
+
+SQL> [KSQL> [K[?2004hSQL> [7mCREATE TABLE RESERVATION[27m
+[7m6[27m
+[7m (Flight# VARCHAR2(5) NOT NULL,[27m
+[7mFldate DATE NOT NULL,[27m
+[7m Seat# VARCHAR2(3),[27m
+[7m FltDtime NUMBER(6,2),[27m
+[7mFltAtime NUMBER(6,2),[27m
+[7m FltDAport CHAR(3),[27m
+[7m FltAAport CHAR(3),[27m
+[7m Cname VARCHAR2(25),[27m
+[7mPRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),[27m
+[7mFOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)[27m
+[7mON DELETE CASCADE);[27m[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[?2004l[C[C[C[C[C[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[?2004hCREATE TABLE RESERVATION
+  2  6
+  3   (Flight# VARCHAR2(5) NOT NULL,
+  4  Fldate DATE NOT NULL,
+  5   Seat# VARCHAR2(3),
+  6   FltDtime NUMBER(6,2),
+  7  FltAtime NUMBER(6,2),
+  8   FltDAport CHAR(3),
+  9   FltAAport CHAR(3),
+ 10   Cname VARCHAR2(25),
+ 11  PRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),
+ 12  FOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)
+ 13  ON DELETE CASCADE);
+6
+*
+ERROR at line 2:
+ORA-00922: missing or invalid option
+
+
+SQL> [KSQL> [K[?2004hSQL> [7mCREATE TABLE RESERVATION[27m
+[7m6[27m
+[7m (Flight# VARCHAR2(5) NOT NULL,[27m
+[7mFldate DATE NOT NULL,[27m
+[7m Seat# VARCHAR2(3),[27m
+[7m FltDtime NUMBER(6,2),[27m
+[7mFltAtime NUMBER(6,2),[27m
+[7m FltDAport CHAR(3),[27m
+[7m FltAAport CHAR(3),[27m
+[7m Cname VARCHAR2(25),[27m
+[7mPRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),[27m
+[7mFOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)[27m
+[7mON DELETE CASCADE);[27m[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[CCREATE TABLE RESERVATION
+6
+ (Flight# VARCHAR2(5) NOT NULL,
+Fldate DATE NOT NULL,
+ Seat# VARCHAR2(3),
+ FltDtime NUMBER(6,2),
+FltAtime NUMBER(6,2),
+ FltDAport CHAR(3),
+ FltAAport CHAR(3),
+ Cname VARCHAR2(25),
+PRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),
+FOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)
+ON DELETE CASCADE);[A[A[A[A[A[A[A[A[A[A[A[A[5PON DELETE CASCADE);
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CCREATE TABLE RESERVATION
+6
+ (Flight# VARCHAR2(5) NOT NULL,
+Fldate DATE NOT NULL,
+ Seat# VARCHAR2(3),
+ FltDtime NUMBER(6,2),
+FltAtime NUMBER(6,2),
+ FltDAport CHAR(3),
+ FltAAport CHAR(3),
+ Cname VARCHAR2(25),
+PRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),
+FOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)
+ON DELETE CASCADE);[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[5PON DELETE CASCADE);
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[7mCREATE TABLE RESERVATION[27m
+[7m6[27m
+[7m (Flight# VARCHAR2(5) NOT NULL,[27m
+[7mFldate DATE NOT NULL,[27m
+[7m Seat# VARCHAR2(3),[27m
+[7m FltDtime NUMBER(6,2),[27m
+[7mFltAtime NUMBER(6,2),[27m
+[7m FltDAport CHAR(3),[27m
+[7m FltAAport CHAR(3),[27m
+[7m Cname VARCHAR2(25),[27m
+[7mPRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),[27m
+[7mFOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)[27m
+[7mON DELETE CASCADE);[27m[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[CCREATE TABLE RESERVATION
+6
+ (Flight# VARCHAR2(5) NOT NULL,
+Fldate DATE NOT NULL,
+ Seat# VARCHAR2(3),
+ FltDtime NUMBER(6,2),
+FltAtime NUMBER(6,2),
+ FltDAport CHAR(3),
+ FltAAport CHAR(3),
+ Cname VARCHAR2(25),
+PRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),
+FOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)
+ON DELETE CASCADE);[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+
+
+
+
+
+
+
+
+
+
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C  (Flight# VARCHAR2(5) NOT NULL,
+[10PFldate DATE
+[2P Seat# VARCHAR2(3),
+[CFltDtime NUMBER(6,2),
+[1PFltA
+[2P FltDAport CHAR(3),
+[C[C[C[CA
+[CCname VARCHAR2(25),
+PRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),
+[8PFOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)
+[29PON DELETE CASCADE);
+[K[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[?2004hCREATE TABLE RESERVATION
+  2   (Flight# VARCHAR2(5) NOT NULL,
+  3  Fldate DATE NOT NULL,
+  4   Seat# VARCHAR2(3),
+  5   FltDtime NUMBER(6,2),
+  6  FltAtime NUMBER(6,2),
+  7   FltDAport CHAR(3),
+  8   FltAAport CHAR(3),
+  9   Cname VARCHAR2(25),
+ 10  PRIMARY KEY(Flight#, FlDate, Seat#, FltDtime, FltAtime),
+ 11  FOREIGN KEY (Flight#) REFERENCES FLIGHT(Flight#)
+ 12  ON DELETE CASCADE);
+
+Table created.
+
+SQL> [KSQL> [K[?2004hSQL> INSERT INTO AIRPORTY[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO AIRPORT
+  2  [K  2  [K[?2004h  2  VALUES('YYZ', "[K'[K[K'Pearson Airport','Torn[Konto', 'ON"[K')[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('YYZ','Pearson Airport','Toronto', 'ON');
+[K
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('YYZ','Pearson Airport','Toronto', 'ON');[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[KINSERT INTO AIRPORT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO AIRPORT
+  2  [K  2  [K[?2004h  2  VALUES('[C[C[C[C[CINSERT INTO AIRPORT[C[C[C[C[CVALUES('YYZ','Pearson Airport','Toronto', 'ON');[C[1P[1P[1@T[1@Z[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1@I[1@s[1@l[1@a[1@n[1@d[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[28PINSERT INTO AIRPORT[C[C[C[C[CVALUES('YTZ','Island Airport','Toronto', 'ON');[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('YTZ','Island Airport','Toronto', 'ON');
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('YTZ','Island Airport','Toronto', 'ON');[C[C[C[C[C[28PINSERT INTO AIRPORT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO AIRPORT
+  2  [K  2  [K[?2004h  2  INSERT INTO AIRPORT[C[C[C[C[CVALUES('YTZ','Island Airport','Toronto', 'ON');[C[1P[1P[1@Q[1@T[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1@T[1@h[1@u[1@n[1@d[1@e[1@r[C[1@ [1@b[1@a[1@y[C[1P[1@B[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1@h[1@u[1@n[1@d[1@e[1@r[1@ [1@B[1@a[1@y[C[C[C[C[C[C[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('YQT','Thunder Bay Airport','Thunder Bay', 'ON');
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('YQT','Thunder Bay Airport','Thunder Bay', 'ON');[C[C[C[C[C[37PINSERT INTO AIRPORT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO AIRPORT
+  2  [K  2  [K[?2004h  2  INSERT INTO AIRPORT[C[C[C[C[CVALUES('YQT','Thunder Bay Airport','Thunder Bay', 'ON');[1P[C[1P[1@Y[1@C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@C[1@a[1@l[1@g[1@a[1@r[1@y[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@C[1@a[1@l[1@g[1@a[1@r[1@y[C[C[C[C[C[1PN');[C[C[1P');A');B');[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('YYC','Calgary Airport','Calgary', 'AB');
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> INSERT INTO FLIGHT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FLIGHT
+  2  [K  2  [K[?2004h  2  VALUES('WJ250','WestJet')[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('WJ250','WestJet');
+[K
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('WJ250','WestJet');[C[C[C[C[C[8PINSERT INTO FLIGHT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FLIGHT
+  2  [K  2  [K[?2004h  2  INSERT INTO FLIGHT[C[C[C[C[CVALUES('WJ250','WestJet');[C[1P','WestJet');[1P','WestJet');[1P','WestJet');[1P','WestJet');[1P','WestJet');A','WestJet');C','WestJet');3','WestJet');0','WestJet');0','WestJet');[C[C[C[C[C[C[C[C[C[C[1P');[1P');[1P');[1P');[1P');[1P');[1P');A');i');r'); ');C');a');n');a');d');a');[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC300','Air Canada');
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC300','Air Canada');[C[1P[1P[1P[1@2[1@7[1@5[C[C[C[C[C[11PINSERT INTO FLIGHT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FLIGHT
+  2  [K  2  [K[?2004h  2  INSERT INTO FLIGHT[C[C[C[C[CVALUES('AC275','Air Canada');[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC275','Air Canada');
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC275','Air Canada');[C[C[C[C[C[11PINSERT INTO FLIGHT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FLIGHT
+  2  [K  2  [K[?2004h  2  INSERT INTO FLIGHT[C[C[C[C[CVALUES('AC275','Air Canada');[C[1P[1P[1P[1P[1P[1@P[1@A[1@2[1@3[1@3[C[C[C[C[C[C[C[C[C[C[C[C[C[1P');[1P');[1P');[1P');[1P');[1P');[1P');[1P');[1P');[1P');P');o');r');t');e');r'); ');A');i');r');l');i');n');e');[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('PA233','Porter Airline');
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> INSERT INTO FARE[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FARE
+  2  [K  2  [K[?2004h  2  VALUEDS[K[KS('WJ250;,'F1',400.50);[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('WJ250;,'F1',400.50);
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('WJ250;,'F1',400.50);[1P,'F1',400.50);[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('WJ250,'F1',400.50);
+SP2-0734: unknown command beginning "VALUES('WJ..." - rest of line ignored.
+SQL> [KSQL> [K[?2004hSQL> VALUES('WJ250,'F1',400.50);;,'F1',400.50);[C[C[C[C[C[12PINSERT INTO FARE[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FARE
+  2  [K  2  [K[?2004h  2  INSERT INTO FARE[C[C[C[C[CVALUES('WJ250,'F1',400.50);[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('WJ250,'F1',400.50);
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('WJ250,'F1',400.50);[C[C[C[C[C[11PINSERT INTO FARE[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FARE
+  2  [K  2  [K[?2004h  2  INSERT INTO FARE[C[C[C[C[CVALUES('WJ250,'F1',400.50);','F1',400.50);[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('WJ250','F1',400.50);
+[K
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('WJ250','F1',400.50);[C[C[C[C[C[12PINSERT INTO FARE[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FARE
+  2  [K  2  [K[?2004h  2  INSERT INTO FARE[C[C[C[C[CVALUES('WJ250','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[C[C[C[C[C[C[C[C[C[C[C[C[CA','F1',400.50);C','F1',400.50);3','F1',400.50);0','F1',400.50);0','F1',400.50);[C[C[C[C[C[1P',400.50);2',400.50);[C[C[C[C[1P00.50);500.50);[C[C[C[C[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC300','F2',500.50);
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC300','F2',500.50);[C[C[C[C[C[12PINSERT INTO FARE[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FARE
+  2  [K  2  [K[?2004h  2  INSERT INTO FARE[C[C[C[C[CVALUES('AC300','F2',500.50);[C[1P','F2',500.50);[1P','F2',500.50);[1P','F2',500.50);2','F2',500.50);7','F2',500.50);5','F2',500.50);[C[C[C[C[C[1P',500.50);1',500.50);[C[C[C[C[1P00.50);400.50);[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC275','F1',400.50);
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC275','F1',400.50);[C[C[C[C[C[12PINSERT INTO FARE[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FARE
+  2  [K  2  [K[?2004h  2  INSERT INTO FARE[C[C[C[C[CVALUES('AC275','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[1P','F1',400.50);[C[C[C[C[C[C[C[C[C[C[C[C[CP','F1',400.50);A','F1',400.50);2','F1',400.50);3','F1',400.50);3','F1',400.50);[C[C[C[C[C[1P',400.50);3',400.50);[C[C[C[C[1P.50);50.50);[C[C[C[C[C[C[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('PA233','F3',450.50);
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> INSERT INTO RESERVATION[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO RESERVATION
+  2  [K  2  [K[?2004h  2  Val[K[KALUES('[7mWJ250 [27mWJ250 ' [C, ' [7m10-Jan-25[27m 10-Jan-25[C' [C, ' 5 A ' , ' 0 8 [1P [1P [1P 8 . 0 0 , 1 4 . 0 0 , ' Y Y Z ' , ' Y Y C ' , ' J o h n [C S m i t h ' ) [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C; [C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('WJ250','10-Jan-25','5A',8.00,14.00,'YYZ','YYC','John Smith'); 
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('WJ250','10-Jan-25','5A',8.00,14.00,'YYZ','YYC','John Smith'); [C[C[C[C[CINSERT INTO RESERVATION[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO RESERVATION
+  2  [K  2  [K[?2004h  2  INSERT INTO RESERVATION[C[C[C[C[CVALUES('WJ250','10-Jan-25','5A',8.00,14.00,'YYZ','YYC','John Smith'); [C[1P[1P[1P[1P[1P[1@A[1@C[1@3[1@0[1@0[C[C[C[C[C[1P[1@5[C[C[C[C[1P[1P[1P[1@F[1@e[1@v[1P[1@b[C[C[C[C[C[C[C[C[1P[1P[1@1[1@2[1@B[C[C[C[1P[1@9[C[C[C[C[1P[1P[1@3[1@0[C[C[C[1P[1@2[C[C[C[C[C[C[C[C[1P[1@C[C[C[C[C[C[C[1P[1P[1@T[1@Z[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1@a[1@n[1@ [1@B[1@a[1@e[1@z[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC300','15-Feb-25','12B',9.30,12.00,'YYC','YTZ','Joan Baez'); 
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC300','15-Feb-25','12B',9.30,12.00,'YYC','YTZ','Joan Baez'); [C[C[C[C[CINSERT INTO RESERVATION[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO RESERVATION
+  2  [K  2  [K[?2004h  2  INSERT INTO RESERVATION[C[C[C[C[CVALUES('AC300','15-Feb-25','12B',9.30,12.00,'YYC','YTZ','Joan Baez'); [1P[1P[1P[1@2[1@7[1@5[C[C[C[C[C[1P[1@6[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1@4[1@C[C[C[C[1P[1@1[1@5[C[C[C[1P[1P[1@0[1@0[C[C[C[1P[1@8[C[C[C[C[C[C[C[1P[1@T[C[1P[1@Z[C[C[C[C[C[C[1P[1P[1@Q[1@T[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@B[1@o[1@b[1@ [1@D[1@y[1@l[1@a[1@n[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC275','16-Feb-25','4C',15.00,18.00,'YTZ','YQT','Bob Dylan'); 
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC275','16-Feb-25','4C',15.00,18.00,'YTZ','YQT','Bob Dylan'); [C[C[C[C[CINSERT INTO RESERVATION[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO RESERVATION
+  2  [K  2  [K[?2004h  2  INSERT INTO RESERVATION[C[C[C[C[CVALUES('AC275','16-Feb-25','4C',15.00,18.00,'YTZ','YQT','Bob Dylan'); [1P[1P[1P[1P[1P[1@P[1@A[1@2[1@2[1@3[C[C[C[C[C[1P[1P[1@0[1@5[C[C[C[C[1P[1P[1P[1@A[1@p[1@r[C[C[C[C[C[C[C[C[1P[1P[1@1[1@A[C[C[C[1P[C[1P[1@7[C[C[C[C[C[C[1P[1@0[C[C[C[C[C[C[C[C[1P[1P[1@Y[1@C[C[C[C[C[C[C[1P[1P[1P[1@Y[1@Y[1@Z[1@C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@H[1@e[1@a[1@t[1@h[1@ [1@L[1@e[1@d[1@g[1@e[1@r[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('PA223','05-Apr-25','1A',7.00,10.00,'YYC','YYZC','Heath Ledger'); 
+VALUES('PA223','05-Apr-25','1A',7.00,10.00,'YYC','YYZC','Heath Ledger')
+                                                 *
+ERROR at line 2:
+ORA-12899: value too large for column "CHANGLU"."RESERVATION"."FLTAAPORT"
+(actual: 4, maximum: 3)
+
+
+SQL> [KSQL> [K[?2004hSQL> COMMIT[?2004l[C[C[C[C[C[K[?2004hCOMMIT
+  2  [K  2  [K[?2004h  2  [?2004l[C[C[C[C[C[?2004h
+SQL> [KSQL> [K[?2004hSQL> select * from cat[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from cat
+  2  [K  2  [K[?2004h  2  select * from cat;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from cat;
+select * from cat
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> [KSQL> [K[?2004hSQL> select * from cat;[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C; [C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('WJ250','10-Jan-25','5A',8.00,14.00,'YYZ','YYC','John Smith'); 
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('WJ250','10-Jan-25','5A',8.00,14.00,'YYZ','YYC','John Smith'); [C[C[C[C[CINSERT INTO RESERVATION[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO RESERVATION
+  2  [K  2  [K[?2004h  2  INSERT INTO RESERVATION[C[C[C[C[CVALUES('WJ250','10-Jan-25','5A',8.00,14.00,'YYZ','YYC','John Smith'); [C[1P[1P[1P[1P[1P[1@A[1@C[1@3[1@0[1@0[C[C[C[C[C[1P[1@5[C[C[C[C[1P[1P[1P[1@F[1@e[1@v[1P[1@b[C[C[C[C[C[C[C[C[1P[1P[1@1[1@2[1@B[C[C[C[1P[1@9[C[C[C[C[1P[1P[1@3[1@0[C[C[C[1P[1@2[C[C[C[C[C[C[C[C[1P[1@C[C[C[C[C[C[C[1P[1P[1@T[1@Z[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1@a[1@n[1@ [1@B[1@a[1@e[1@z[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC300','15-Feb-25','12B',9.30,12.00,'YYC','YTZ','Joan Baez'); 
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC300','15-Feb-25','12B',9.30,12.00,'YYC','YTZ','Joan Baez'); [C[C[C[C[CINSERT INTO RESERVATION[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO RESERVATION
+  2  [K  2  [K[?2004h  2  INSERT INTO RESERVATION[C[C[C[C[CVALUES('AC300','15-Feb-25','12B',9.30,12.00,'YYC','YTZ','Joan Baez'); [1P[1P[1P[1@2[1@7[1@5[C[C[C[C[C[1P[1@6[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1@4[1@C[C[C[C[1P[1@1[1@5[C[C[C[1P[1P[1@0[1@0[C[C[C[1P[1@8[C[C[C[C[C[C[C[1P[1@T[C[1P[1@Z[C[C[C[C[C[C[1P[1P[1@Q[1@T[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@B[1@o[1@b[1@ [1@D[1@y[1@l[1@a[1@n[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('AC275','16-Feb-25','4C',15.00,18.00,'YTZ','YQT','Bob Dylan'); 
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> VALUES('AC275','16-Feb-25','4C',15.00,18.00,'YTZ','YQT','Bob Dylan'); [C[C[C[C[CINSERT INTO RESERVATION[K[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO RESERVATION
+  2  [K  2  [K[?2004h  2  INSERT INTO RESERVATION[C[C[C[C[CVALUES('AC275','16-Feb-25','4C',15.00,18.00,'YTZ','YQT','Bob Dylan'); [1P[1P[1P[1P[1P[1@P[1@A[1@2[1@2[1@3[C[C[C[C[C[1P[1P[1@0[1@5[C[C[C[C[1P[1P[1P[1@A[1@p[1@r[C[C[C[C[C[C[C[C[1P[1P[1@1[1@A[C[C[C[1P[C[1P[1@7[C[C[C[C[C[C[1P[1@0[C[C[C[C[C[C[C[C[1P[1P[1@Y[1@C[C[C[C[C[C[C[1P[1P[1P[1@Y[1@Y[1@Z[1@C[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@H[1@e[1@a[1@t[1@h[1@ [1@L[1@e[1@d[1@g[1@e[1@r[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hVALUES('PA223','05-Apr-25','1A',7.00,10.00,'YYC','YYZC','Heath Ledger'); 
+VALUES('PA223','05-Apr-25','1A',7.00,10.00,'YYC','YYZC','Heath Ledger')
+                                                 *
+ERROR at line 2:
+ORA-12899: value too large for column "CHANGLU"."RESERVATION"."FLTAAPORT"
+(actual: 4, maximum: 3)
+
+
+SQL> [KSQL> [K[?2004hSQL> COMMIT[?2004l[C[C[C[C[C[K[?2004hCOMMIT
+  2  [K  2  [K[?2004h  2  [?2004l[C[C[C[C[C[?2004h
+SQL> [KSQL> [K[?2004hSQL> select * from cat[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from cat
+  2  [K  2  [K[?2004h  2  select * from cat;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from cat;
+select * from cat
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> [KSQL> [K[?2004hSQL> select * from cat;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from cat;
+
+TABLE_NAME		       TABLE_TYPE
+------------------------------ -----------
+RESERVATION		       TABLE
+FLIGHT			       TABLE
+FARE			       TABLE
+AIRPORT 		       TABLE
+
+SQL> [KSQL> [K[?2004hSQL> select * from Airport;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from Airport;
+
+AIR NAME		      CITY	      STA
+--- ------------------------- --------------- ---
+YYZ Pearson Airport	      Toronto	      ON
+YTZ Island Airport	      Toronto	      ON
+YQT Thunder Bay Airport       Thunder Bay     ON
+YYC Calgary Airport	      Calgary	      AB
+
+SQL> [KSQL> [K[?2004hSQL> select * from Airport;[1P;[1P;[1P;[1P;[1P;[1P;[1P;F;l;i;g;h;t;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from Flight;
+
+FLIGH AIRLINE
+----- ---------------
+WJ250 WestJet
+AC300 Air Canada
+AC275 Air Canada
+PA233 Porter Airline
+
+SQL> [KSQL> [K[?2004hSQL> select * from Flight;[1P;[1P;[1P;[1P;[1P;a;r;e;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from Fare;
+
+FLIGH FA     AMOUNT
+----- -- ----------
+WJ250 F1      400.5
+AC300 F2      500.5
+AC275 F1      400.5
+PA233 F3      450.5
+
+SQL> [KSQL> [K[?2004hSQL> select * from Fare;[1P;[1P;[1P;[1P;[1P; ;R;e;s;e;r;v;a;t;i;o;n;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect * from Reservation;
+
+FLIGH FLDATE	SEA   FLTDTIME	 FLTATIME FLT FLT CNAME
+----- --------- --- ---------- ---------- --- --- -------------------------
+WJ250 10-JAN-25 5A	     8	       14 YYZ YYC John Smith
+AC300 15-FEB-25 12B	   9.3	       12 YYC YTZ Joan Baez
+AC275 16-FEB-25 4C	    15	       18 YTZ YQT Bob Dylan
+
+SQL> [KSQL> [K[?2004hSQL> exit[?2004l[C[C[C[C[C[K[?2004hexit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+[?2004l[?2004h]0;changlu@delta: ~[01;32mchanglu@delta[00m:[01;34m~[00m$ exit
+[?2004lexit
+Script done.
+[?2004h]0;changlu@delta: ~[01;32mchanglu@delta[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34m2560[0m  [01;34m2650[0m  changlu_assn2que2.txt  script
+[?2004h]0;changlu@delta: ~[01;32mchanglu@delta[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34m2560[0m  [01;34m2650[0m  changlu_assn2que2.txt  script
+[?2004h]0;changlu@delta: ~[01;32mchanglu@delta[00m:[01;34m~[00m$ c[Kexit
+[?2004lexit
+
+Script done on 2025-02-27 23:42:41-05:00 [COMMAND_EXIT_CODE="0"]

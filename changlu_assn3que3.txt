@@ -1,0 +1,181 @@
+Script started on 2025-03-25 15:00:02-04:00 [TERM="xterm-256color" TTY="/dev/pts/56" COLUMNS="236" LINES="74"]
+[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ exit[2Pwqlspwdscript changlu_assn3que2.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd 3150[Ksqlplus changlu
+[?2004l[?2004h
+SQL*Plus: Release 21.0.0.0.0 - Production on Tue Mar 25 15:00:09 2025
+Version 21.8.0.0.0
+
+Copyright (c) 1982, 2022, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[?2004h[KEnter password: [17G[17G[KEnter password: *[18G[18G[KEnter password: **[19G[19G[KEnter password: ***[20G[20G[KEnter password: ****[21G[21G[KEnter password: *****[22G[22G[KEnter password: ******[23G[23G[KEnter password: *******[24G[24G[KEnter password: ********[25G[25G[KEnter password: *********[26G[26G[KEnter password: **********[27G[27G[KEnter password: ***********[28G[28G[KEnter password: ************[29G[29G[17G[?2004l
+[KEnter password: [17G[?2004h
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [K[?2004hSQL> INSERT INTO AIRPORT VALUES[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO AIRPORT VALUES
+  2  [K  2  [K[?2004h  2  ('YYT', 'Tintit[K[Kin Airport', 'Tintitn[K[Kn', 'ON')[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004h('YYT', 'Tintin Airport', 'Tintin', 'ON');
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> UPDATE SEAT_RESERVATION[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hUPDATE SEAT_RESERVATION
+  2  [K  2  [K[?2004h  2  SET CU[K[KCustomer_phone = '519-253-4001'[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSET Customer_phone = '519-253-4001'
+  3  [K  3  [K[?2004h  3  WHERE Custi[Komer_name = 'Tony Appa';[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE Customer_name = 'Tony Appa';
+
+2 rows updated.
+
+SQL> [KSQL> [K[?2004hSQL> INSERT INTO FLIGHT VALUES[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hINSERT INTO FLIGHT VALUES
+  2  [K  2  [K[?2004h  2  ('AC331', 'AIR[K[Kir Canada',2)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004h('AC331', 'Air Canada',2);
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> DELETE FROM SEAT_RESERVATION[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hDELETE FROM SEAT_RESERVATION
+  2  [K  2  [K[?2004h  2  WJHER[K[K[K[KHERE Customer_name = 'Mariane Mooer';[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hWHERE Customer_name = 'Mariane Mooer';
+
+2 rows deleted.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * Fr[K®o[K[KROM AIRPORT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM AIRPORT
+  2  [K  2  [K[?2004h  2  ;[?2004l[C[C[C[C[C[K[?2004h;
+
+AIR NAME			   CITY 			  ST
+--- ------------------------------ ------------------------------ --
+YYT Tintin Airport		   Tintin			  ON
+YYZ Pearson Airport		   Toronto			  ON
+YTZ Island Airport		   Toronto			  ON
+YQT Thunder Bay Airport 	   Thunder Bay			  ON
+YQG Windsor Airport		   Windsor			  ON
+YYC Calgary Airport		   Calgary			  AB
+
+6 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELEV[KCT * FROM FLIU[KGHT;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM FLIGHT;
+
+FLIGH AIRLINE						   WEEKDAYS
+----- -------------------------------------------------- ----------
+AC331 Air Canada						  2
+WJ250 WestJet							  3
+WJ261 WestJet							  4
+AC275 Air Canada						  2
+AC300 Air Canada						  3
+AC320 Air Canada						  2
+PA233 Porter Airline						  5
+PA280 Porter Airline						  4
+
+8 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM FLIGHT_LEG;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM FLIGHT_LEG;
+
+FLIGH LEG_NUMBER DEP SCHEDULED_DEPARTURE_TIME ARR SCHEDULED_ARRIVAL_TIME
+----- ---------- --- ------------------------ --- ----------------------
+WJ250	       1 YQG			    8 YYZ		       9
+WJ250	       2 YYZ			   12 YYC		      17
+AC275	       1 YQT			   10 YYZ		      11
+AC275	       2 YYZ			   13 YQG		      14
+PA233	       1 YQG			   16 YYZ		      17
+PA280	       1 YYZ			   11 YQG		      12
+
+6 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * D[KFROM LEG_INSTANCE;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM LEG_INSTANCE;
+
+FLIGH LEG_NUMBER FDATE	   NUM_AVAILABLE_SEATS AIRPLANE_ID	    DEP
+----- ---------- --------- ------------------- -------------------- ---
+DEPARTURE_TIME ARR ARRIVAL_TIME
+-------------- --- ------------
+WJ250	       1 15-JAN-17		   200 Boeing_777	    YQG
+	     8 YYZ	    8.5
+
+WJ250	       2 15-JAN-17		   200 Boeing_777	    YYZ
+	  12.3 YYC	   16.5
+
+AC275	       1 10-JAN-17		    60 Airbus_200	    YQT
+	    10 YYZ	     11
+
+
+FLIGH LEG_NUMBER FDATE	   NUM_AVAILABLE_SEATS AIRPLANE_ID	    DEP
+----- ---------- --------- ------------------- -------------------- ---
+DEPARTURE_TIME ARR ARRIVAL_TIME
+-------------- --- ------------
+AC275	       2 10-JAN-17		    60 Airbus_200	    YYZ
+	    13 YQG	     14
+
+PA233	       1 30-JAN-17		   120 Boeing_737	    YQG
+	    16 YYZ	     17
+
+PA280	       1 20-JAN-17		   120 Boeing_737	    YYZ
+	    11 YQG	     12
+
+
+6 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM FARE:[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM FARE:
+  2  [K  2  [K[?2004h  2  ;[?2004l[C[C[C[C[C[K[?2004h;
+SELECT * FROM FARE:
+                  *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM FARE;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM FARE;
+
+FLIGH FA AMOUNT     RESTRICTIONS
+----- -- ---------- --------------------------------------------------
+WJ250 F1 $250	    None
+WJ250 F2 $350	    None
+AC275 F1 $275	    Non-refundable
+AC275 F2 $300	    Non-refundable
+PA233 F3 $150	    None
+PA280 F3 $150	    None
+
+6 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM SEAT_RESERVATION;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM SEAT_RESERVATION;
+
+FLIGH LEG_NUMBER FDATE	   SEA
+----- ---------- --------- ---
+CUSTOMER_NAME					   CUSTOMER_PHO
+-------------------------------------------------- ------------
+WJ250	       1 15-JAN-17 6A
+Tony Appa					   519-253-4001
+
+WJ250	       2 15-JAN-17 7D
+Tony Appa					   519-253-4001
+
+WJ250	       1 15-JAN-17 6B
+Karen Appa					   226-253-4000
+
+
+FLIGH LEG_NUMBER FDATE	   SEA
+----- ---------- --------- ---
+CUSTOMER_NAME					   CUSTOMER_PHO
+-------------------------------------------------- ------------
+WJ250	       2 15-JAN-17 7C
+Karen Appa					   226-253-4000
+
+AC275	       1 10-JAN-17 5C
+Mark Black					   226-212-5341
+
+AC275	       2 10-JAN-17 14B
+Mark Black					   226-212-5341
+
+
+FLIGH LEG_NUMBER FDATE	   SEA
+----- ---------- --------- ---
+CUSTOMER_NAME					   CUSTOMER_PHO
+-------------------------------------------------- ------------
+PA233	       1 30-JAN-17 5A
+Peter Opo					   519-444-1234
+
+PA280	       1 20-JAN-17 16D
+Chris Natta					   226-123-5555
+
+
+8 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> exit[?2004l[C[C[C[C[C[K[?2004hexit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+[?2004l[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ xo[K[Kexit
+[?2004lexit
+
+Script done on 2025-03-25 15:13:54-04:00 [COMMAND_EXIT_CODE="0"]

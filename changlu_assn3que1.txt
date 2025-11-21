@@ -1,0 +1,299 @@
+Script started on 2025-03-25 00:40:04-04:00 [TERM="xterm-256color" TTY="/dev/pts/27" COLUMNS="117" LINES="61"]
+[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ sqlplus changku[K[Klu
+[?2004l[?2004h
+SQL*Plus: Release 21.0.0.0.0 - Production on Tue Mar 25 00:40:13 2025
+Version 21.8.0.0.0
+
+Copyright (c) 1982, 2022, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[?2004h[KEnter password: [17G[17G[KEnter password: *[18G[18G[KEnter password: **[19G[19G[KEnter password: ***[20G[20G[KEnter password: ****[21G[21G[KEnter password: *****[22G[22G[KEnter password: ******[23G[23G[KEnter password: *******[24G[24G[KEnter password: ********[25G[25G[KEnter password: *********[26G[26G[KEnter password: **********[27G[27G[KEnter password: ***********[28G[28G[KEnter password: ************[29G[29G[17G[?2004l
+[KEnter password: [17G[?2004h
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [K[?2004hSQL> exit@changlu_airlinedroptable.sql[5Pata.sqlschema.sqldroptable.sql[3Pschema.sql[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004h@changlu_airlineschema.sql
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+SQL> [KSQL> [K[?2004hSQL> @changlu_airlineschema.sql[C[C[C[C[Cexit[K@changlu_airlinedroptable.sql[C[C[C[C[Cexit[K@changlu_airlineschema.sql[C[C[C[C[C[K@changlu_airlineschema.sql[C[C[C[C[Cexit[K@changlu_airlinedroptable.sql[5Pata.sql[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004h@changlu_airlinedata.sql
+[K
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+[K
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+[K
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+[K
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+[K
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+[K
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> [KSQL> [K[?2004hSQL> seleec[K[Kcyt[K[Kt *FROM AIRPORT[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hselect *FROM AIRPORT
+  2  [K  2  [K[?2004h  2  ;[?2004l[C[C[C[C[C[K[?2004h;
+
+AIR NAME			   CITY 			  ST
+--- ------------------------------ ------------------------------ --
+YYZ Pearson Airport		   Toronto			  ON
+YTZ Island Airport		   Toronto			  ON
+YQT Thunder Bay Airport 	   Thunder Bay			  ON
+YQG Windsor Airport		   Windsor			  ON
+YYC Calgary Airport		   Calgary			  AB
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM FLIGHT;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM FLIGHT;
+
+FLIGH AIRLINE						   WEEKDAYS
+----- -------------------------------------------------- ----------
+WJ250 WestJet							  3
+WJ261 WestJet							  4
+AC275 Air Canada						  2
+AC300 Air Canada						  3
+AC320 Air Canada						  2
+PA233 Porter Airline						  5
+PA280 Porter Airline						  4
+
+7 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM FLIGHT_LEG;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM FLIGHT_LEG;
+
+FLIGH LEG_NUMBER DEP SCHEDULED_DEPARTURE_TIME ARR SCHEDULED_ARRIVAL_TIME
+----- ---------- --- ------------------------ --- ----------------------
+WJ250	       1 YQG			    8 YYZ		       9
+WJ250	       2 YYZ			   12 YYC		      17
+AC275	       1 YQT			   10 YYZ		      11
+AC275	       2 YYZ			   13 YQG		      14
+PA233	       1 YQG			   16 YYZ		      17
+PA280	       1 YYZ			   11 YQG		      12
+
+6 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM FLIGHT_LEG;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;[1P;F;R;O;M; ;L;E;G;_;I;N;S;T;A;N;C;E;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM LEG_INSTANCE;
+
+FLIGH LEG_NUMBER FDATE	   NUM_AVAILABLE_SEATS AIRPLANE_ID	    DEP
+----- ---------- --------- ------------------- -------------------- ---
+DEPARTURE_TIME ARR ARRIVAL_TIME
+-------------- --- ------------
+WJ250	       1 15-JAN-17		   200 Boeing_777	    YQG
+	     8 YYZ	    8.5
+
+WJ250	       2 15-JAN-17		   200 Boeing_777	    YYZ
+	  12.3 YYC	   16.5
+
+AC275	       1 10-JAN-17		    60 Airbus_200	    YQT
+	    10 YYZ	     11
+
+
+FLIGH LEG_NUMBER FDATE	   NUM_AVAILABLE_SEATS AIRPLANE_ID	    DEP
+----- ---------- --------- ------------------- -------------------- ---
+DEPARTURE_TIME ARR ARRIVAL_TIME
+-------------- --- ------------
+AC275	       2 10-JAN-17		    60 Airbus_200	    YYZ
+	    13 YQG	     14
+
+PA233	       1 30-JAN-17		   120 Boeing_737	    YQG
+	    16 YYZ	     17
+
+PA280	       1 20-JAN-17		   120 Boeing_737	    YYZ
+	    11 YQG	     12
+
+
+6 rows selected.
+
+SQL> [KSQL> [K[K[?2004hSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> [KSQL> SELECR[Kt[KT * FROM AF[K[KFARE:[K;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM FARE;
+
+FLIGH FA AMOUNT     RESTRICTIONS
+----- -- ---------- --------------------------------------------------
+WJ250 F1 $250	    None
+WJ250 F2 $350	    None
+AC275 F1 $275	    Non-refundable
+AC275 F2 $300	    Non-refundable
+PA233 F3 $150	    None
+PA280 F3 $150	    None
+
+6 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> SELECT * FROM SEAT_RESERVAR[KTION;[C[C[C[C[C[?2004l[C[C[C[C[C[K[?2004hSELECT * FROM SEAT_RESERVATION;
+
+FLIGH LEG_NUMBER FDATE	   SEA
+----- ---------- --------- ---
+CUSTOMER_NAME					   CUSTOMER_PHO
+-------------------------------------------------- ------------
+WJ250	       1 15-JAN-17 20A
+Mariane Mooer					   519-253-3000
+
+WJ250	       2 15-JAN-17 13D
+Mariane Mooer					   519-253-3000
+
+WJ250	       1 15-JAN-17 6A
+Tony Appa					   226-253-4000
+
+
+FLIGH LEG_NUMBER FDATE	   SEA
+----- ---------- --------- ---
+CUSTOMER_NAME					   CUSTOMER_PHO
+-------------------------------------------------- ------------
+WJ250	       2 15-JAN-17 7D
+Tony Appa					   226-253-4000
+
+WJ250	       1 15-JAN-17 6B
+Karen Appa					   226-253-4000
+
+WJ250	       2 15-JAN-17 7C
+Karen Appa					   226-253-4000
+
+
+FLIGH LEG_NUMBER FDATE	   SEA
+----- ---------- --------- ---
+CUSTOMER_NAME					   CUSTOMER_PHO
+-------------------------------------------------- ------------
+AC275	       1 10-JAN-17 5C
+Mark Black					   226-212-5341
+
+AC275	       2 10-JAN-17 14B
+Mark Black					   226-212-5341
+
+PA233	       1 30-JAN-17 5A
+Peter Opo					   519-444-1234
+
+
+FLIGH LEG_NUMBER FDATE	   SEA
+----- ---------- --------- ---
+CUSTOMER_NAME					   CUSTOMER_PHO
+-------------------------------------------------- ------------
+PA280	       1 20-JAN-17 16D
+Chris Natta					   226-123-5555
+
+
+10 rows selected.
+
+SQL> [KSQL> [K[?2004hSQL> exit[?2004l[C[C[C[C[C[K[?2004hexit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+[?2004l[?2004h]0;changlu@delta: ~/3150[01;32mchanglu@delta[00m:[01;34m~/3150[00m$ exit
+[?2004lexit
+
+Script done on 2025-03-25 00:44:49-04:00 [COMMAND_EXIT_CODE="0"]

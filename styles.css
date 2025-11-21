@@ -1,0 +1,18 @@
+/* Student Number: [110127893] */
+:root { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+body { margin: 0; padding: 0 1rem; }
+header { border-bottom: 1px solid #ccc; }
+h1 { margin: .5rem 0; }
+footer { margin: 2rem 0; border-top: 1px solid #ccc; padding-top: .5rem; }
+main { max-width: 60ch; margin: 0 auto; }
+header { background: #fafafa; border-bottom: 1px solid #ddd; }
+nav a { text-decoration: none; margin-right: .5rem; }
+nav a[aria-current="page"] { font-weight: 600; }
+ul {
+list-style-type: square;
+padding-left: 1.5rem;
+}
+li {
+margin: 0.25rem 0;
+}
+/* note: adjusted main width on feature branch */
